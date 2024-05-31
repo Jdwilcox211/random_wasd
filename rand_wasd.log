@@ -1,0 +1,5 @@
+INFO:rand_wasd: 05/31/2024 02:59:26 PM - Starting script...
+INFO:rand_wasd:random choice s
+INFO:rand_wasd:random press 4.437773440296844
+INFO:rand_wasd:random wait 4.3740795774907255
+WARNING:rand_wasd:PyAutoGUI fail-safe triggered from mouse moving to a corner of the screen. To disable this fail-safe, set pyautogui.FAILSAFE to False. DISABLING FAIL-SAFE IS NOT RECOMMENDED.
