@@ -12,9 +12,15 @@ import ctypes
 #ic.enable()
 #ic.disable()
 
-#remove last log file
-os.remove("rand_wasd.log")
+#timelimit for script to run seconds*minutes*hours.  60.00*60*3 is 3 hours.  keep one variable a float
+timelimit=(60.00*60*3)
 
+#remove last log file
+try:
+    os.remove("rand_wasd.log")
+except Exception as e:
+    ic(e)
+    
 #timestamp for script run
 runtimestamp=datetime.now()
 runtlog=runtimestamp.strftime("%m/%d/%Y %I:%M:%S %p")
@@ -32,60 +38,70 @@ timestamp=datetime.now()
 tlog=timestamp.strftime("%m/%d/%Y %I:%M:%S %p")
 logger.info(f' {tlog} - Starting script...')
 
+#define list and variables
+#keylist is keys to press, loop will select a random entry from teh list
 keylist=('w','a','s','d','s','s','d')
-rand1=random.randrange(1,20)
-rand2=random.randrange(1,10)
-
-ic.disable()
-#pyautogui.press('left')  
-ic('\n')
-ic(random.randrange(1,20))
-ic(random.uniform(1,20))
-ic(random.randrange(1,20))
-ic(random.randrange(1,20))
-ic()
-ic.enable()
-#timelimit seconds*minutes*hours
-timelimit=(60.00*60*3)
-
+#defining list to fill with random entries
+randkeylist = []
+randpresslist = []
+randwaitlist = []
+#seconds is the starting seconds 0 at which to add the random press and wait times to.  this will be compared to the timelimit variable to ensure it runs for exact time limit and no longer
 seconds=0
-time.sleep(2)
+
+time.sleep(5)
+
 try:
     while seconds < (timelimit):
+        #pick random key add to list
         randchoice=random.choice(keylist)
         ic(f"random choice {randchoice}")
-        pyautogui.keyDown(randchoice)
-        #pyautogui.press(randchoice)
+        randkeylist.append(randchoice)
         
-        
+        #pick random press time for button and add to list.
         randpress=random.uniform(1.00,8.00)
         ic(f"random press {randpress}")
-        time.sleep(randpress)
+        randpresslist.append(randpress)
         seconds = seconds + randpress
-        
-        
-        pyautogui.keyUp(randchoice)
-        
+    
+        #pick random wait time for inbetween button pushes and add to list.     
         randwait=random.uniform(1.00,5.00)
         ic(f"random wait {randwait}")
-        time.sleep(randwait)
+        randwaitlist.append(randwait)
         seconds = seconds + randwait
-             
-        logger.info(ic(f"random choice {randchoice}"))
-        logger.info(ic(f"random press {randpress}"))
-        logger.info(ic(f"random wait {randwait}"))
+        
+        
         del randchoice
         del randpress
         del randwait
+        
+        
+    logger.info(ic(f"random choice: {randkeylist} \n"))
+    logger.info(ic(f"random press: {randpresslist} \n"))
+    logger.info(ic(f"random wait: {randwaitlist} \n \n \n"))
+    logger.info(ic(f"TOTAL List Entries: {len(randkeylist)} \n \n \n"))        
+    
+    #loop to interate tthe entrys from the lists
+    for i in range(0,len(randkeylist)):
+        
+        logger.info(ic(f"random key choice {randkeylist[i]}"))
+        pyautogui.keyDown(randkeylist[i])
+        logger.info(ic(f"random press {randpresslist[i]}"))
+        time.sleep(randpresslist[i])
+        pyautogui.keyUp(randkeylist[i])
+        logger.info(ic(f"random wait {randwaitlist[i]}"))
+        time.sleep(randwaitlist[i])
+        
+            
 except Exception as e:
     logger.warning(f'{e}')
     MB_SETFOREGROUND = 0x10000
     ctypes.windll.user32.MessageBoxW(0, "Script Fail Safe has been enabled", "Fail Safe Notification", MB_SETFOREGROUND)
     sys.exit()
         
+               
 ic("loop has finished")    
 timestamp=datetime.now()
 tlog=timestamp.strftime("%m/%d/%Y %I:%M:%S %p")
 MB_SETFOREGROUND = 0x10000
-ctypes.windll.user32.MessageBoxW(0, f' {tlog} App has reached is maximum time limit of {timelimit} seconds', "Completion Notification", MB_SETFOREGROUND)
+ctypes.windll.user32.MessageBoxW(0, f' {tlog} App has reached the maximum time limit of {timelimit} seconds', "Completion Notification", MB_SETFOREGROUND)
 logger.info(f' {tlog} App has reached is maximum time limit of {timelimit} seconds')
