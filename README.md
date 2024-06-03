@@ -1,4 +1,8 @@
 # random_wasd
+
+This script randomly presses w,a,s, or d keys to stop the game from sensing you're idle.  
+Could be used on many games but was developed to use with Fortnite.  Some games may require more robust methods so it may not work for all.
+
 Must have python installed https://www.python.org/
 was created with 3.11.4, will likely work on later installations.
 
