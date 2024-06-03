@@ -10,7 +10,7 @@ import ctypes
 
 #icecream status
 #ic.enable()
-#ic.disable()
+ic.disable()
 
 #timelimit for script to run seconds*minutes*hours.  60.00*60*3 is 3 hours.  keep one variable a float
 timelimit=(60.00*60*3)
@@ -47,7 +47,8 @@ randpresslist = []
 randwaitlist = []
 #seconds is the starting seconds 0 at which to add the random press and wait times to.  this will be compared to the timelimit variable to ensure it runs for exact time limit and no longer
 seconds=0
-
+#timeran to calculate runtime through out script
+runtime=0
 time.sleep(5)
 
 try:
@@ -75,8 +76,8 @@ try:
         del randwait
         
         
-    logger.info(ic(f"random choice: {randkeylist} \n"))
-    logger.info(ic(f"random press: {randpresslist} \n"))
+    logger.info(ic(f"random choice: {randkeylist} \n \n"))
+    logger.info(ic(f"random press: {randpresslist} \n \n"))
     logger.info(ic(f"random wait: {randwaitlist} \n \n \n"))
     logger.info(ic(f"TOTAL List Entries: {len(randkeylist)} \n \n \n"))        
     
@@ -88,8 +89,13 @@ try:
         logger.info(ic(f"random press {randpresslist[i]}"))
         time.sleep(randpresslist[i])
         pyautogui.keyUp(randkeylist[i])
-        logger.info(ic(f"random wait {randwaitlist[i]}"))
+        logger.info(ic(f"random wait {randwaitlist[i]} \n "))
         time.sleep(randwaitlist[i])
+        runtime = runtime + randwaitlist[i] + randpresslist[i]
+        
+        logger.info(ic(f"Total Hours ran {(int(((runtime)/60)/60))}"))
+        logger.info(ic(f"Total Minutes ran {int((runtime)/60)}"))
+        logger.info(ic(f"Total Seconds ran {int(runtime)} \n \n \n"))
         
             
 except Exception as e:
