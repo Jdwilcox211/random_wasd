@@ -13,8 +13,8 @@ you will have to edit the paths in .bat for your own python paths and script dir
 
 
 time limit default to run for 3 hours.  timelimit variable is on line 17 of the rand_wasd.py script
-timelimit variable is formatted as seconds x minutes x hours. ie .60.00*60*3 is 3 hours.  
-Keep one number in the variable a float (include decimals ie60.00)
+timelimit variable is formatted as seconds x minutes x hours. ie. 60.00 x 60 x 3 is 3 hours.  
+Keep one number in the variable a float (include decimals ie. 60.00)
 
 If you wish to stop early move cursor to the top left corner of the screen on the main monitor and hold until the fail safe popup appears.
 
