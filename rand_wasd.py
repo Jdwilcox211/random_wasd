@@ -49,7 +49,7 @@ randwaitlist = []
 seconds=0
 #timeran to calculate runtime through out script
 runtime=0
-time.sleep(5)
+time.sleep(10)
 
 try:
     while seconds < (timelimit):
@@ -59,13 +59,13 @@ try:
         randkeylist.append(randchoice)
         
         #pick random press time for button and add to list.
-        randpress=random.uniform(1.00,8.00)
+        randpress=random.uniform(.05,8.00)
         ic(f"random press {randpress}")
         randpresslist.append(randpress)
         seconds = seconds + randpress
     
         #pick random wait time for inbetween button pushes and add to list.     
-        randwait=random.uniform(1.00,5.00)
+        randwait=random.uniform(.000,2.00)
         ic(f"random wait {randwait}")
         randwaitlist.append(randwait)
         seconds = seconds + randwait
