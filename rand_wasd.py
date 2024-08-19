@@ -13,7 +13,7 @@ import ctypes
 ic.disable()
 
 #timelimit for script to run seconds*minutes*hours.  60.00*60*3 is 3 hours.  keep one variable a float
-timelimit=(60.00*60*3)
+timelimit=(60.00*60*4)
 
 #remove last log file
 try:
