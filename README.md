@@ -1,6 +1,6 @@
 # random_wasd
-This script randomly presses w,a,s, or d keys to stop the game from disconnecting due to being idle.
-Could be used on many games but was developed to use with Fortnite. Some games may require more robust methods so it may not work for all.
+This script randomly presses w,a,s,d, and b keys to stop the game from disconnecting due to being idle.
+Could be used on many games but was developed to use with Fortnite lego and festival jam modes for passive xp. Some games may require more robust methods so it may not work for all.
 
 Must have python installed https://www.python.org/
 was created with 3.11.4, and successfully tested on 3.12.3
@@ -12,8 +12,8 @@ you will have to edit the paths in .bat for your own python paths and script dir
 
 
 
-time limit default to run for 3 hours.  timelimit variable is on line 17 of the rand_wasd.py script
-timelimit variable is formatted as seconds x minutes x hours. ie. 60.00 x 60 x 3 is 3 hours.  
+time limit default to run for 4 hours.  timelimit variable is on line 17 of the rand_wasd.py script
+timelimit variable is formatted as seconds x minutes x hours. ie. 60.00 x 60 x 4 is 4 hours.  
 Keep one number in the variable a float (include decimals ie. 60.00)
 
 If you wish to stop early move cursor to the top left corner of the screen on the main monitor and hold until the fail safe popup appears.
