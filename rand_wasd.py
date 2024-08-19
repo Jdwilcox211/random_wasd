@@ -40,7 +40,7 @@ logger.info(f' {tlog} - Starting script...')
 
 #define list and variables
 #keylist is keys to press, loop will select a random entry from teh list
-keylist=('w','a','s','d','s','w','w')
+keylist=('w','a','s','d','s','w','w','b')
 #defining list to fill with random entries
 randkeylist = []
 randpresslist = []
